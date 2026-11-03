@@ -19,10 +19,13 @@ export default function Skills({ intro }: { intro?: string }) {
           intro={intro ?? "Everything a camera team needs to move quickly and get the shot, done carefully and without fuss."}
         />
         <StaggerGroup className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {skills.map((s) => (
+          {skills.map((s, i) => (
             <StaggerItem
               key={s.title}
-              className="group flex flex-col overflow-hidden rounded-card border border-white/15 bg-teal-deep/40 transition-[border-color,transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-[0_24px_50px_rgba(0,0,0,.25)]"
+              className={`${
+                // An odd card out sits centred on the last row
+                i === skills.length - 1 && skills.length % 3 === 1 ? "sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:col-start-2 lg:mx-0 lg:w-auto " : ""
+              }group flex flex-col overflow-hidden rounded-card border border-white/15 bg-teal-deep/40 transition-[border-color,transform,box-shadow] duration-500 hover:-translate-y-1.5 hover:border-gold/50 hover:shadow-[0_24px_50px_rgba(0,0,0,.25)]`}
             >
               <div className="relative aspect-[16/8] overflow-hidden">
                 <Image

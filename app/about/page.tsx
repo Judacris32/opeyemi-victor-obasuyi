@@ -15,7 +15,7 @@ import portrait from "@/assets/images/portrait-camera.jpg";
 import salford from "@/assets/images/salford.jpg";
 import { heroes } from "@/content/images";
 import { milestones, principles, story } from "@/content/about";
-import { site } from "@/content/site";
+import { education } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const facts = [
   { label: "Available", value: "Nigeria, Africa & worldwide" },
   { label: "On set since", value: "2018" },
-  { label: "Studied at", value: "University of Salford" },
+  { label: "Education", value: "MA, University of Salford" },
   { label: "Latest credit", value: "KM17 (2024)" },
 ];
 
@@ -136,7 +136,7 @@ export default function AboutPage() {
           <SectionHeading
             kicker="My journey"
             title={["The story", { accent: "so far" }]}
-            intro="From a trainee in Lagos to the camera team of the year's Best Movie, and a degree in the UK along the way."
+            intro="From a trainee in Lagos to the camera team of the year's Best Movie, and a master's in the UK along the way."
           />
           <Milestones items={milestones} />
         </Container>
@@ -156,18 +156,22 @@ export default function AboutPage() {
             <Reveal y={14}>
               <Kicker className="text-gold">Education</Kicker>
             </Reveal>
-            <SplitHeading parts={["Trained on set,", { accent: "studied" }, "in the UK"]} accentStyle="gradient" className="font-display text-display-1 font-extrabold uppercase" />
+            <SplitHeading parts={["Trained on set,", { accent: "schooled" }, "in the edit"]} accentStyle="gradient" className="font-display text-display-1 font-extrabold uppercase" />
             <Reveal delay={0.15}>
               <p className="m-0 text-lg leading-relaxed text-mist">
-                I graduated from the University of Salford ({site.salford.degree}, {site.salford.year}). It gave me a formal grounding
-                to go with years of hands-on experience, and a second home base in the UK, a short walk from the broadcasters and
-                production companies of MediaCityUK.
+                In 2024 I completed an MA in Editing for Television, Film and Digital Media at the University of Salford. Learning
+                how footage is cut together changed how I work on set: I know what the edit needs, from clean slates and organised
+                media to the coverage that makes a scene work. Before film, I earned a BA in History and International Studies at
+                Ajayi Crowther University, Oyo, in 2015.
               </p>
             </Reveal>
             <Reveal delay={0.25} className="flex flex-wrap gap-3">
-              {["University of Salford", "Greater Manchester", "Open to travel"].map((t) => (
-                <span key={t} className="rounded-full border border-white/20 px-4 py-2 text-[14px]">
-                  {t}
+              {education.map((e) => (
+                <span key={e.degree} className="flex flex-col rounded-2xl border border-white/20 px-5 py-3">
+                  <span className="text-[15px] font-semibold">{e.short}</span>
+                  <span className="text-[13px] text-mist">
+                    {e.place} · {e.year}
+                  </span>
                 </span>
               ))}
             </Reveal>

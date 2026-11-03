@@ -1,4 +1,6 @@
-import { site } from "./site";
+import { education } from "./site";
+
+const [ma, ba] = education;
 
 import skillCamera from "@/assets/images/skills/camera-prep.jpg";
 import skillLenses from "@/assets/images/skills/lenses.jpg";
@@ -6,6 +8,7 @@ import skillMovement from "@/assets/images/skills/movement.jpg";
 import skillSlate from "@/assets/images/skills/slate.jpg";
 import skillLighting from "@/assets/images/skills/lighting.jpg";
 import skillComms from "@/assets/images/skills/communication.jpg";
+import skillEditing from "@/assets/images/skills/editing.jpg";
 
 export const stats = [
   { value: 8, suffix: "+", label: "Years on professional sets" },
@@ -33,6 +36,12 @@ export const skills = [
     alt: "A camera dolly with an ARRI camera on track laid across a location",
     title: "Camera movement",
     text: "Dolly, slider and track set-ups, laid and levelled so moves are smooth and easy to repeat.",
+  },
+  {
+    image: skillEditing,
+    alt: "An editing timeline open on a laptop at the end of a shoot day",
+    title: "Editing & post-production",
+    text: "With an MA in Editing for TV, Film & Digital Media, I know what the edit needs from set: usable coverage, accurate logs and media that's ready to cut.",
   },
   {
     image: skillSlate,
@@ -72,7 +81,7 @@ export const principles = [
 export const story = [
   "I came into the camera department in 2018 as a trainee at Cardoso Imagery in Lagos. Within months I was on set for God Calling, learning how a professional camera team moves, communicates and protects the shot.",
   "Since then I've worked on Breath of Life, which won Best Movie at the 2024 Africa Magic Viewers' Choice Awards, and KM17, now streaming on Prime Video. Every production has taught me the same lesson: the best camera work starts long before anyone calls action.",
-  `Today I take on productions across Nigeria, Africa and internationally, and I'm always ready to travel. Studying at the University of Salford in the UK broadened how I see the craft. I bring the pace and discipline of Nollywood sets, and a calm, organised way of working, to every production I join.`,
+  `Today I take on productions across Nigeria, Africa and internationally, and I'm always ready to travel. My master's in editing at the University of Salford taught me where every shot ends up, and I carry that into how I work on set. I bring the pace and discipline of Nollywood sets, and a calm, organised way of working, to every production I join.`,
 ];
 
 export type Milestone = {
@@ -84,6 +93,12 @@ export type Milestone = {
 };
 
 export const milestones: Milestone[] = [
+  {
+    year: ba.year,
+    title: ba.school,
+    text: `Graduated with a ${ba.degree}, before finding my way into film.`,
+    tag: ba.place,
+  },
   {
     year: "2018",
     title: "Trainee, Cardoso Imagery",
@@ -112,9 +127,9 @@ export const milestones: Milestone[] = [
     href: "/work/km17",
   },
   {
-    year: site.salford.year,
-    title: "University of Salford",
-    text: `Graduated with a ${site.salford.degree}, adding formal study to years of experience on set.`,
-    tag: "Salford, UK",
+    year: ma.year,
+    title: ma.school,
+    text: `Graduated with an ${ma.degree}, adding a second craft to years of experience on set.`,
+    tag: ma.place,
   },
 ];

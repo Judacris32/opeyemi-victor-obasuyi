@@ -9,11 +9,28 @@ export const site = {
   base: "Lagos, Nigeria",
   availability: "Available across Nigeria, Africa and internationally",
   url: "https://obasuyi.com", // TODO: replace with the live domain
-  email: "Obasuyiopeyemi28@gmail.com", // TODO: replace with Opeyemi's real email
+  email: "obasuyiopeyemi28@gmail.com",
   instagram: { handle: "@thegiftedhand", href: "https://www.instagram.com/thegiftedhand/" },
   imdb: "https://www.imdb.com/name/nm13006968/",
-  salford: { degree: "[DEGREE]", year: "[YEAR]" }, // TODO: fill in
 } as const;
+
+/** Degrees, most recent first. */
+export const education = [
+  {
+    degree: "MA Editing for Television, Film & Digital Media",
+    short: "MA, University of Salford",
+    school: "University of Salford",
+    place: "Salford, UK",
+    year: "2024",
+  },
+  {
+    degree: "BA History & International Studies",
+    short: "BA, Ajayi Crowther University",
+    school: "Ajayi Crowther University",
+    place: "Oyo, Nigeria",
+    year: "2015",
+  },
+];
 
 export const navLinks = [
   { href: "/work", label: "Work" },

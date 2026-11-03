@@ -66,7 +66,10 @@ const personSchema = {
   jobTitle: "Camera Department, Film & Television",
   url: site.url,
   sameAs: [site.imdb, site.instagram.href],
-  alumniOf: { "@type": "CollegeOrUniversity", name: "University of Salford" },
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "University of Salford" },
+    { "@type": "CollegeOrUniversity", name: "Ajayi Crowther University" },
+  ],
   knowsAbout: ["Cinematography", "Camera assistance", "Film production", "Camera department"],
 };
 
