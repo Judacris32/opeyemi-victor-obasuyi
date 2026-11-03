@@ -9,7 +9,7 @@ export const site = {
   base: "Lagos, Nigeria",
   availability: "Available across Nigeria, Africa and internationally",
   url: "https://obasuyi.com", // TODO: replace with the live domain
-  email: "hello@obasuyi.com", // TODO: replace with Opeyemi's real email
+  email: "Obasuyiopeyemi28@gmail.com", // TODO: replace with Opeyemi's real email
   instagram: { handle: "@thegiftedhand", href: "https://www.instagram.com/thegiftedhand/" },
   imdb: "https://www.imdb.com/name/nm13006968/",
   salford: { degree: "[DEGREE]", year: "[YEAR]" }, // TODO: fill in

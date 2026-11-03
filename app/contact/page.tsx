@@ -42,7 +42,7 @@ export default function ContactPage() {
         <Container className="flex flex-col items-center text-center">
           <Reveal y={14}>
             <Kicker center className="text-ember">
-              Drop me a line
+              Bookings & enquiries
             </Kicker>
           </Reveal>
           <Reveal delay={0.1} className="mt-8 w-full">
