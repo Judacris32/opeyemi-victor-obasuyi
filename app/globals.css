@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-[17px] leading-[1.65] text-ink antialiased;
+  }
+  ::selection {
+    @apply bg-gold text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #ff6b3d;
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Accent words inside display headings */
+  .accent {
+    @apply font-serif font-normal italic normal-case tracking-normal;
+    padding: 0 0.08em 0 0.02em;
+  }
+  /* Hand-drawn highlighter stroke behind the word, for light backgrounds */
+  .accent-marker {
+    background-image: linear-gradient(transparent 58%, #ffc145 58%, #ffc145 90%, transparent 90%);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  /* Sunset gradient text, for dark backgrounds and photos */
+  .accent-gradient {
+    background-image: linear-gradient(95deg, #ff6b3d 0%, #ff8a63 40%, #ffc145 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .accent-gold {
+    @apply text-gold;
+  }
+  .accent-sun {
+    @apply text-sun;
+  }
+
+  .link-draw {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+    transition: background-size 0.45s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+  }
+  .link-draw:hover {
+    background-size: 100% 1px;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1.5px currentColor;
+    color: transparent;
+  }
+}
