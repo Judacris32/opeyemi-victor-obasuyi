@@ -48,9 +48,11 @@ export default function ContactPage() {
           <Reveal delay={0.1} className="mt-8 w-full">
             <a
               href={`mailto:${site.email}`}
-              className="group relative inline-block max-w-full break-words font-display text-[clamp(2.4rem,8vw,7.5rem)] font-extrabold leading-none text-ink transition-colors duration-500 hover:text-ember"
+              className="group relative inline-block max-w-full font-display text-[clamp(1.85rem,5.4vw,5.25rem)] font-extrabold lowercase leading-[1.05] text-ink transition-colors duration-500 hover:text-ember"
             >
-              {site.email}
+              {/* Lets long addresses wrap neatly after the @ on small screens instead of mid-word */}
+              {site.email.split("@")[0]}
+              <wbr />@{site.email.split("@")[1]}
               <span className="absolute -bottom-3 left-0 h-[6px] w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-sun to-gold transition-transform duration-700 group-hover:scale-x-100" />
             </a>
           </Reveal>
