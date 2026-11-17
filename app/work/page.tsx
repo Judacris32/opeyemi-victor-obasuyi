@@ -10,13 +10,13 @@ import PosterCard from "@/components/work/PosterCard";
 import Counter from "@/components/motion/Counter";
 import Reveal from "@/components/motion/Reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
-import { credits } from "@/content/credits";
+import { additionalCredits, featuredCredits } from "@/content/credits";
 import { heroes } from "@/content/images";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Work",
-  description: "Feature film credits for Opeyemi Victor Obasuyi, including Breath of Life (Best Movie, AMVCA 2024), KM17 and God Calling.",
+  description: "Selected film, television, documentary and music video credits for cinematographer Opeyemi Victor Obasuyi.",
 };
 
 const recognition = [
@@ -32,16 +32,16 @@ export default function WorkPage() {
         image={heroes.work}
         label="Work"
         crumbs={[{ label: "Work" }]}
-        title={["Films I've", { accent: "worked on" }]}
-        intro="Feature films for cinema and streaming. Open any title for the story, the team and the awards."
+        title={["Projects I've", { accent: "worked on" }]}
+        intro="Feature films, television, documentaries, music videos and short films. Explore the projects and the different roles behind them."
       />
 
       <Section tone="paper" aria-label="Credits">
         <Container>
           <SectionHeading
-            kicker="Credits"
+            kicker="Feature film credits"
             title={["On screen", { accent: "now" }]}
-            intro="Every credit here is listed on my IMDb page. The awards belong to the films and the people who won them, and I'm proud to have been on set for each one."
+            intro="A selection of feature films, with credits and production details. The awards belong to the films and the people who won them, and I'm proud to have contributed to each production."
             action={
               <Button href={site.imdb} external variant="outline">
                 View my IMDb
@@ -49,9 +49,26 @@ export default function WorkPage() {
             }
           />
           <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {credits.map((c, i) => (
-              <StaggerItem key={c.slug} className={i === 2 ? "sm:col-span-2 sm:mx-auto sm:w-1/2 lg:col-span-1 lg:mx-0 lg:w-auto" : ""}>
+            {featuredCredits.map((c, i) => (
+              <StaggerItem key={c.slug}>
                 <PosterCard credit={c} priority={i === 0} />
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </Container>
+      </Section>
+
+      <Section tone="peach" aria-label="Additional projects">
+        <Container>
+          <SectionHeading
+            kicker="Beyond feature films"
+            title={["More projects,", { accent: "different roles" }]}
+            intro="From television and documentary work to music videos and short films, these projects reflect the range of roles I've taken on across screen production."
+          />
+          <StaggerGroup className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {additionalCredits.map((c) => (
+              <StaggerItem key={c.slug}>
+                <PosterCard credit={c} />
               </StaggerItem>
             ))}
           </StaggerGroup>

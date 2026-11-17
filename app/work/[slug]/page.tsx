@@ -23,8 +23,8 @@ export function generateMetadata({ params }: Props): Metadata {
   const credit = getCredit(params.slug);
   if (!credit) return {};
   return {
-    title: `${credit.title} (${credit.year})`,
-    description: `${credit.title} (${credit.year}). ${credit.tagline} Opeyemi Obasuyi is credited as ${credit.role}.`,
+    title: credit.year ? `${credit.title} (${credit.year})` : credit.title,
+    description: `${credit.title}. ${credit.tagline} Opeyemi Obasuyi is credited as ${credit.role}.`,
   };
 }
 
@@ -41,11 +41,23 @@ export default function FilmPage({ params }: Props) {
     <>
       {/* Header: blurred poster backdrop, poster and key facts */}
       <section className="relative overflow-hidden bg-ink pb-24 pt-40 text-white md:pb-32 md:pt-48">
-        <Image src={credit.poster} alt="" fill sizes="100vw" className="scale-125 object-cover opacity-30 blur-3xl" />
+        {credit.poster && <Image src={credit.poster} alt="" fill sizes="100vw" className="scale-125 object-cover opacity-30 blur-3xl" />}
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-ink/50 to-ink" />
         <Container className="relative grid items-center gap-12 md:grid-cols-[minmax(0,340px)_1fr] md:gap-16">
-          <Reveal className="relative mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-card shadow-[0_40px_80px_rgba(0,0,0,.5)] md:max-w-none">
-            <Image src={credit.poster} alt={`${credit.title} poster`} fill priority placeholder="blur" sizes="340px" className="object-cover" />
+          <Reveal className="relative mx-auto aspect-[3/4] w-full max-w-[280px] overflow-hidden rounded-card bg-[radial-gradient(circle_at_80%_20%,rgba(255,193,69,.26),transparent_35%),linear-gradient(145deg,#153f3b,#101c1b_65%,#090f0e)] shadow-[0_40px_80px_rgba(0,0,0,.5)] md:max-w-none">
+            {credit.poster ? (
+              <Image src={credit.poster} alt={`${credit.title} artwork`} fill priority placeholder="blur" sizes="340px" className="object-contain" />
+            ) : (
+              <div className="absolute inset-0 flex flex-col justify-between p-7 text-white md:p-9">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">Selected project</span>
+                <div>
+                  <span className="mb-4 block h-px w-14 bg-gold" />
+                  <span className="block font-display text-4xl font-extrabold uppercase leading-[0.92] md:text-5xl">{credit.title}</span>
+                  <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.2em] text-gold">{credit.format}</span>
+                </div>
+                <span className="font-serif text-sm italic text-white/55">Production credit</span>
+              </div>
+            )}
           </Reveal>
           <div className="flex flex-col items-center gap-6 text-center md:items-start md:text-left">
             <Reveal y={14}>
@@ -60,7 +72,7 @@ export default function FilmPage({ params }: Props) {
             <Reveal delay={0.3} className="flex flex-wrap justify-center gap-3 md:justify-start">
               <span className="rounded-full bg-sun px-4 py-2 text-[13px] font-semibold text-ink">{credit.role}</span>
               <span className="rounded-full border border-white/30 px-4 py-2 text-[13px] font-medium">
-                {credit.format} · {credit.year}
+                {credit.format}{credit.year ? ` · ${credit.year}` : ""}
               </span>
               {credit.highlight && (
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-4 py-2 text-[13px] font-semibold text-ink">
@@ -78,23 +90,40 @@ export default function FilmPage({ params }: Props) {
           <div className="flex flex-col gap-12">
             {credit.synopsis && (
               <Reveal className="flex flex-col gap-5">
-                <Kicker className="text-ember">The film</Kicker>
+                <Kicker className="text-ember">The project</Kicker>
                 <p className="m-0 font-serif text-lede">{credit.synopsis}</p>
               </Reveal>
             )}
             <Reveal delay={0.1} className="flex flex-col gap-5">
               <Kicker className="text-ember">My part</Kicker>
               <p className="m-0 text-lg leading-relaxed text-muted">
-                I worked on {credit.title} in the camera department, credited as {credit.role.toLowerCase()}. That meant
-                preparing and building the camera, managing lenses, slates and media, and keeping every set-up ready so the
-                director and cinematographer could keep shooting.
+                {credit.contribution ?? `I contributed to ${credit.title} as ${credit.role}.`}
               </p>
-              <div>
-                <Button href={credit.imdb} external variant="dark">
-                  Full crew on IMDb
-                </Button>
-              </div>
+              {(credit.externalLink || credit.imdb) && (
+                <div>
+                  <Button href={credit.externalLink ?? credit.imdb!} external variant="dark">
+                    {credit.linkLabel ?? "View production details"}
+                  </Button>
+                </div>
+              )}
             </Reveal>
+
+            {credit.evidenceImage && (
+              <Reveal delay={0.12} className="flex flex-col gap-4">
+                <Kicker className="text-ember">Production credit</Kicker>
+                <figure className="m-0 overflow-hidden rounded-2xl border border-line bg-ink p-3 shadow-card">
+                  <Image
+                    src={credit.evidenceImage}
+                    alt={`On-screen production credit for ${credit.title}`}
+                    sizes="(min-width: 1024px) 720px, 100vw"
+                    className="h-auto w-full rounded-xl object-contain"
+                  />
+                  <figcaption className="px-2 pb-1 pt-3 text-[13px] leading-relaxed text-white/75">
+                    {credit.evidenceCaption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            )}
 
             {credit.awards && (
               <Reveal delay={0.15} className="rounded-banner bg-peach p-7 md:p-10">
@@ -155,7 +184,7 @@ export default function FilmPage({ params }: Props) {
         </Container>
 
         <Container className="mt-24">
-          <nav aria-label="More films" className="grid gap-4 border-t border-line pt-12 sm:grid-cols-2">
+          <nav aria-label="More projects" className="grid gap-4 border-t border-line pt-12 sm:grid-cols-2">
             {[
               { c: prev, label: "Previous film", alignEnd: false },
               { c: next, label: "Next film", alignEnd: true },
@@ -165,11 +194,11 @@ export default function FilmPage({ params }: Props) {
                 href={`/work/${c.slug}`}
                 className={`group flex items-center gap-5 rounded-card bg-peach p-4 transition-colors duration-500 hover:bg-gold ${alignEnd ? "sm:flex-row-reverse sm:text-right" : ""}`}
               >
-                <span className="relative h-24 w-[72px] flex-none overflow-hidden rounded-xl">
-                  <Image src={c.poster} alt="" fill sizes="72px" className="object-cover" />
+                <span className="relative flex h-24 w-[72px] flex-none items-center justify-center overflow-hidden rounded-xl bg-ink px-2 text-center text-[10px] font-bold uppercase leading-tight text-gold">
+                  {c.poster ? <Image src={c.poster} alt="" fill sizes="72px" className="object-cover" /> : c.title}
                 </span>
                 <span className="flex flex-col gap-1">
-                  <span className="text-[13px] font-medium text-muted">{label}</span>
+                  <span className="text-[13px] font-medium text-muted">{label.replace("film", "project")}</span>
                   <span className="font-display text-display-3 font-extrabold uppercase">{c.title}</span>
                 </span>
               </Link>

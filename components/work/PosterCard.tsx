@@ -16,31 +16,45 @@ export default function PosterCard({ credit, priority }: { credit: Credit; prior
         className="group flex h-full flex-col gap-5 rounded-card bg-white p-3 shadow-card transition-shadow duration-500 hover:shadow-lift"
       >
         <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-ink">
-          <Image src={credit.poster} alt="" fill aria-hidden="true" sizes="400px" className="scale-125 object-cover opacity-50 blur-2xl" />
-          <Image
-            src={credit.poster}
-            alt={`${credit.title} poster`}
-            fill
-            priority={priority}
-            placeholder="blur"
-            sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
-            className="object-contain transition-transform duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.06]"
-          />
+          {credit.poster ? (
+            <>
+              <Image src={credit.poster} alt="" fill aria-hidden="true" sizes="400px" className="scale-125 object-cover opacity-50 blur-2xl" />
+              <Image
+                src={credit.poster}
+                alt={`${credit.title} artwork`}
+                fill
+                priority={priority}
+                placeholder="blur"
+                sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw"
+                className="object-contain transition-transform duration-[1200ms] ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.06]"
+              />
+            </>
+          ) : (
+            <div className="absolute inset-0 flex flex-col justify-between overflow-hidden bg-[radial-gradient(circle_at_80%_20%,rgba(255,193,69,.26),transparent_35%),linear-gradient(145deg,#153f3b,#101c1b_65%,#090f0e)] p-7 text-white">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/60">On the production slate</span>
+              <div className="relative z-0">
+                <span className="mb-3 block h-px w-12 bg-gold" />
+                <span className="block font-display text-[clamp(2rem,4vw,3.4rem)] font-extrabold uppercase leading-[0.92]">{credit.title}</span>
+                <span className="mt-4 block text-[12px] font-medium uppercase tracking-[0.18em] text-gold">{credit.format}</span>
+              </div>
+              <span className="self-end font-serif text-sm italic text-white/55">Selected project</span>
+            </div>
+          )}
           {credit.highlight && (
             <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1.5 text-[12px] font-semibold text-ink shadow-card">
               <Icon name="award" className="h-3.5 w-3.5" />
               {credit.highlight}
             </span>
           )}
-          <span className="absolute inset-0 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-            <span className="inline-flex translate-y-3 items-center gap-2 rounded-full bg-paper px-5 py-3 text-[14px] font-semibold text-ink transition-transform duration-500 group-hover:translate-y-0">
-              View film <Icon name="arrow" className="h-4 w-4" />
+          <span className="absolute inset-0 z-20 flex items-center justify-center bg-ink/45 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <span className="relative z-10 inline-flex translate-y-3 items-center gap-2 rounded-full bg-paper px-5 py-3 text-[14px] font-semibold text-ink transition-transform duration-500 group-hover:translate-y-0">
+              View project <Icon name="arrow" className="h-4 w-4" />
             </span>
           </span>
         </div>
         <div className="flex flex-col gap-2 px-3 pb-3">
           <span className="text-[13px] font-medium text-muted">
-            {credit.year} · {credit.format}
+            {credit.year ? `${credit.year} · ` : ""}{credit.format}
           </span>
           <h3 className="m-0 font-display text-display-3 font-extrabold uppercase transition-colors duration-500 group-hover:text-ember">
             {credit.title}
