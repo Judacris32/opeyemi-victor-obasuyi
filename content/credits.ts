@@ -5,6 +5,7 @@ import posterBreathOfLife from "@/assets/images/poster-breath-of-life.jpg";
 import posterGodCalling from "@/assets/images/poster-god-calling.jpg";
 import posterKonna from "@/assets/images/poster-konna.jpg";
 import posterRedFlag from "@/assets/images/poster-red-flag.jpg";
+import posterJourneyOfAnAfricanColony from "@/assets/images/poster-journey-of-an-african-colony.jpg";
 import konnaCredit from "@/assets/images/credits/konna-credit.jpg";
 import journeyCredit from "@/assets/images/credits/journey-credit.jpg";
 import redFlagCredit from "@/assets/images/credits/red-flag-credit.jpg";
@@ -156,7 +157,8 @@ export const credits: Credit[] = [
     title: "Journey of an African Colony",
     format: "Documentary",
     role: "Camera Assistant",
-    externalLink: "https://www.youtube.com/watch?v=qRzHljnd1Gg",
+    poster: posterJourneyOfAnAfricanColony,
+    externalLink: "https://www.youtube.com/results?search_query=journey+of+an+african+colony",
     evidenceImage: journeyCredit,
     evidenceCaption: "On-screen end credits identifying Opeyemi Obasuyi as Camera Assistant.",
     linkLabel: "Watch documentary",
