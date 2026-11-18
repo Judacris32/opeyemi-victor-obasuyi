@@ -53,7 +53,7 @@ export default function Footer() {
 
           <div className="md:col-span-4">
             <span className={heading}>Get in touch</span>
-            <a href={`mailto:${site.email}`} className="link-draw text-xl font-medium hover:text-sun md:text-2xl">
+            <a href={`mailto:${site.email}`} className="link-draw block max-w-full break-words text-[clamp(1rem,1.15vw,1.375rem)] font-medium leading-snug hover:text-sun">
               {site.email}
             </a>
             <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-white/10 p-5">

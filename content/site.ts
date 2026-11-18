@@ -7,9 +7,9 @@ export const site = {
   firstName: "Opeyemi",
   title: "Camera Department, Film & TV",
   base: "Lagos, Nigeria",
-  availability: "Available across Nigeria, Africa and internationally",
+  availability: "Available across Nigeria, Africa and the United Kingdom",
   url: "https://obasuyi.com", // TODO: replace with the live domain
-  email: "obasuyiopeyemi28@gmail.com",
+  email: "gyftedhandsproduction@gmail.com",
   instagram: { handle: "@thegiftedhand", href: "https://www.instagram.com/thegiftedhand/" },
   imdb: "https://www.imdb.com/name/nm13006968/",
 } as const;
@@ -50,6 +50,6 @@ export const productions = [
 ];
 
 /** Where he takes bookings. Shown as chips in the footer, menu and contact page. */
-export const regions = ["Nigeria", "Africa", "International"];
+export const regions = ["Nigeria", "Africa", "United Kingdom"];
 
 export const craftWords = ["Camera prep", "Lenses & focus", "Camera movement", "Slate & media", "Lighting support", "Set etiquette"];

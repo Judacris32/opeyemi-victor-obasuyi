@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const recognition = [
   { value: 5, label: "AMVCA wins for Breath of Life, including Best Movie", slug: "breath-of-life", film: "Breath of Life" },
   { value: 11, label: "AMVCA nominations for God Calling, with 2 wins", slug: "god-calling", film: "God Calling" },
-  { value: 2, label: "Films now streaming on Prime Video", slug: "km17", film: "KM17 & Breath of Life" },
+  { value: 3, label: "Titles now streaming on Prime Video", slug: "km17", film: "KM17, Breath of Life & HQ Barbers" },
 ];
 
 export default function WorkPage() {
@@ -116,7 +116,7 @@ export default function WorkPage() {
             className="!mb-0"
             kicker="Watch"
             title={["Stream them", { accent: "tonight" }]}
-            intro="Breath of Life and KM17 are both available on Prime Video. God Calling played in Nigerian cinemas in 2018."
+            intro="Breath of Life, KM17 and HQ Barbers are available on Prime Video. God Calling played in Nigerian cinemas in 2018."
           />
         </Container>
       </Section>

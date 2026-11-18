@@ -14,7 +14,7 @@ export const stats = [
   { value: 8, suffix: "+", label: "Years on professional sets" },
   { value: 3, suffix: "", label: "Feature credits on IMDb" },
   { value: 2, suffix: "", label: "AMVCA-recognised films" },
-  { value: 2, suffix: "", label: "Titles on Prime Video" },
+  { value: 3, suffix: "", label: "Titles on Prime Video" },
 ];
 
 /** What he brings to a production. Kept to work he has done on set. */
